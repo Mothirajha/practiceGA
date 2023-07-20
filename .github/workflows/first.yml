@@ -9,13 +9,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-  nodejssetup:
-    name: Nodejs setup
-    runs-on: ubuntu-latest
-
-    steps:
       - uses: actions/setup-node@v3
         with:
           node-version: '19'
       - run: echo "Node version successfully installed"
+      - run: yarn install
+      - run: yarn run build
+
+  tests:
+    name: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '19'
+      - run: yarn install
+      - run: yarn test

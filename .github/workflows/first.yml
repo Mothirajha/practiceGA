@@ -1,0 +1,11 @@
+name: Basic GA
+
+on: [push, workflow_dispatch]
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
